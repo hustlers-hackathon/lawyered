@@ -7,6 +7,7 @@ import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.mit.lawyered.R;
@@ -22,8 +23,8 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         bttmView = (BottomNavigationView)findViewById(R.id.navView);
-
-
+        Toolbar tool = (Toolbar)findViewById(R.id.mainToolbar);
+        setSupportActionBar(tool);
         //handle user selection on bottom navigation view
         bttmView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
