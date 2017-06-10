@@ -17,9 +17,10 @@ public class SeeNotificationController implements OnResponse,OnResponseLaw {
     LawBrokenForNotificationController lawBrokenForNotificationController;
     FindLawBrokenController findLawBrokenController;
 
-    Notification n;
+    Notification n;    Law law;
+
     LawBroken lawb;
-    Law law;
+
 
     public SeeNotificationController(Notification notifi){
         this.n=notifi;
