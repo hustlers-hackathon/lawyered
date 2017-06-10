@@ -70,11 +70,12 @@ public class SignIn extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Check the inputs ",Toast.LENGTH_SHORT).show();
 
                         }else{
+
                             Intent intent = new Intent(SignIn.this,Home.class);
                             startActivity(intent);
                             finish();
                         }
                     }
-                })
+                });
     }
 }
