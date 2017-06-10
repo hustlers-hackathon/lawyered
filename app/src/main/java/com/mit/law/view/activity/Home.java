@@ -65,8 +65,8 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         bttmView = (BottomNavigationView)findViewById(R.id.navView);
-        Toolbar tool = (Toolbar)findViewById(R.id.mainToolbar);
-        setSupportActionBar(tool);
+        //Toolbar tool = (Toolbar)findViewById(R.id.mainToolbar);
+        //setSupportActionBar(tool);
 
         mAuth=FirebaseAuth.getInstance();
 
