@@ -61,4 +61,8 @@ public class LawsForTagListController {
         });
     }
 
+    public List<Law> getAllLawDescForTags(){
+        return lawDescList;
+    }
+
 }
