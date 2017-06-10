@@ -2,30 +2,40 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" 
     android:layout_height="wrap_content">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mainToolbar"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="6dp">
+    </android.support.v7.widget.Toolbar>
     
     <LinearLayout
+        android:layout_below="@+id/mainToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="20dp">
+        android:layout_margin="10dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvLawTitle"
             android:text="Title"
-            android:textSize="40sp"
+            android:textSize="15sp"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
-            android:padding="10dp"/>
+            android:padding="5dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvShortDescr"
             android:text="Short Description"
-            android:textSize="25sp"
-            android:padding="10dp"/>
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="10sp"
+            android:padding="5dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,28 +45,30 @@
 
             <Button
                 android:id="@+id/btnMark"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:background="@color/colorAccent"
-                android:textColor="@color/colorPrimaryDark"
-                android:padding="20dp"
-                android:textSize="25sp"
-                android:textAllCaps="false"
+                android:layout_height="30dp"
                 android:layout_marginRight="20dp"
-                android:text="Mark as Broken" />
+                android:layout_marginTop="20dp"
+                android:background="@color/colorAccent"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Mark as Broken"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/btnView"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
                 android:background="@color/colorAccent"
-                android:textColor="@color/colorPrimaryDark"
-                android:padding="20dp"
-                android:textSize="25sp"
-                android:textAllCaps="false"
                 android:text="View More"
-                android:layout_marginTop="50dp"/>
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
