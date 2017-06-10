@@ -18,9 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.mit.law.view.activity.Home" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name="com.mit.law.view.activity.Home"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
-        </activity>
+        <activity android:name="com.mit.law.view.activity.clicks_on_law_dialog"
+            android:theme="@style/Theme.AppCompat.Light.Dialog"/>
     </application>
 
 </manifest>
