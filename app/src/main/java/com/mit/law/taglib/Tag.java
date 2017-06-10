@@ -26,9 +26,26 @@ public class Tag {
                 Constants.DEFAULT_TAG_IS_DELETABLE, Constants.DEFAULT_TAG_DELETE_INDICATOR_COLOR, Constants.DEFAULT_TAG_DELETE_INDICATOR_SIZE, Constants.DEFAULT_TAG_RADIUS, Constants.DEFAULT_TAG_DELETE_ICON, Constants.DEFAULT_TAG_LAYOUT_BORDER_SIZE, Constants.DEFAULT_TAG_LAYOUT_BORDER_COLOR);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if(this.text==o)return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Tag tag = (Tag) o;
+
+        return text.equals(tag.text);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return text.hashCode();
+    }
+
     private void init(int id, String text, int tagTextColor, float tagTextSize,
                       int layoutColor, int layoutColorPress, boolean isDeletable,
-                      int deleteIndicatorColor,float deleteIndicatorSize, float radius,
+                      int deleteIndicatorColor, float deleteIndicatorSize, float radius,
                       String deleteIcon, float layoutBorderSize, int layoutBorderColor) {
         this.id = id;
         this.text = text;
@@ -43,5 +60,7 @@ public class Tag {
         this.deleteIcon = deleteIcon;
         this.layoutBorderSize = layoutBorderSize;
         this.layoutBorderColor = layoutBorderColor;
+
+
     }
 }
