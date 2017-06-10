@@ -1,4 +1,4 @@
-package com.mit.lawyered.View.Activity;
+package com.mit.law.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
