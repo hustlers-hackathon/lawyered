@@ -13,23 +13,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvName"
-            android:text="Name"/>
+            android:id="@+id/tvTitleLaw"
+            android:text="Title"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvRate"
-            android:layout_gravity="end"
-            android:layout_marginLeft="600dp"
-            android:text="5/10"/>
+
 
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvProfInBrief"
+        android:id="@+id/tvLawInShort"
         android:text="Short Description" />
 
     <LinearLayout
