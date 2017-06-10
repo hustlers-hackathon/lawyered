@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_home"
+        android:id="@+id/menu_laws"
         android:icon="@drawable/common_google_signin_btn_icon_dark"
         android:title="@string/menu_law"
         />
     <item
-        android:id="@+id/menu_search"
+        android:id="@+id/menu_alerts"
         android:icon="@drawable/common_google_signin_btn_icon_dark"
         android:title="@string/menu_alerts" />
 
     <item
-        android:id="@+id/menu_notifications"
+        android:id="@+id/menu_profiles"
         android:icon="@drawable/common_google_signin_btn_icon_dark"
         android:title="@string/menu_profiles" />
 </menu>
