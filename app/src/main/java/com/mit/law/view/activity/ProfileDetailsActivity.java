@@ -21,7 +21,7 @@ public class ProfileDetailsActivity extends AppCompatActivity{
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
         setContentView(R.layout.profile_in_full);
-        thirdParty = (ThirdParties)getIntent().getExtras().get("Third_Party");
+        thirdParty = (ThirdParties)getIntent().getExtras().get("Lawyer");
 
         TextView name = (TextView)findViewById(R.id.tvName);
         TextView rate = (TextView)findViewById(R.id.tvRate);
