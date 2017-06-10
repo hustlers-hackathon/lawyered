@@ -26,6 +26,7 @@ public class ReadNotificationController {
     String id;
 
     public ReadNotificationController(OnResponse responder){
+
         this.response=responder;
         mAuth=FirebaseAuth.getInstance();
         mDatabase=FirebaseDatabase.getInstance().getReference().child("notifications");
