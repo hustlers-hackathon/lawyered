@@ -29,6 +29,7 @@
         <activity android:name="com.mit.law.view.activity.ProfileDetailsActivity"/>
         <activity android:name="com.mit.law.view.activity.Rate_lawyer" android:theme="@style/Theme.AppCompat.Light.Dialog"/>
         <activity android:name="com.mit.law.view.activity.LocationRulesActivity"/>
+        <activity android:name="com.mit.law.view.activity.Lawyer_clicks_on_notification"  android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
 
     </application>
 

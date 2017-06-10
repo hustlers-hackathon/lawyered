@@ -21,6 +21,7 @@ import com.mit.law.controller.firebase.ThirdPartyController;
 import com.mit.law.controller.interfaces.OnResponse;
 import com.mit.law.model.Notification;
 import com.mit.law.model.ThirdParties;
+import com.mit.law.view.activity.Lawyer_clicks_on_notification;
 import com.mit.law.view.activity.LocationRulesActivity;
 import com.mit.law.view.activity.ProfileDetailsActivity;
 import com.mit.lawyered.R;
@@ -71,6 +72,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                     @Override
                     public void onClick(View v) {
                         new SeeNotificationController(noti);
+                        Intent intent = new Intent(getContext(), Lawyer_clicks_on_notification.class);
+                        Bundle extra = new Bundle();
+                        extra.putParcelable("noti",noti);
+                        intent.putExtras(extra);
+                        getContext().startActivity(intent);
                     }
                 });
                 break;
