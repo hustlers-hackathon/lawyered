@@ -1,5 +1,7 @@
 package com.mit.law.controller.firebase;
 
+import android.util.Log;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,6 +36,7 @@ public class AcceptRequestController {
         notification.setLawyerID(notifi.getLawyerID());
         String key=mAccept.push().getKey();
         notification.setNid(key);
+        Log.d("Check accept",notification.getNid());
         mAccept.child(key).setValue(notification);
 
     }
