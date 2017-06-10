@@ -12,6 +12,6 @@ import com.mit.lawyered.R;
 public class LawDetailsActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.law);
+        setContentView(R.layout.law_in_full);
     }
 }

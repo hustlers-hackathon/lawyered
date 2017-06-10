@@ -18,11 +18,14 @@ import android.widget.Toast;
 
 import com.mit.law.controller.adapter.LawsFragmentAdapter;
 import com.mit.law.controller.firebase.LawsForTagListController;
+import com.mit.law.controller.firebase.ReadNotificationController;
 import com.mit.law.controller.interfaces.OnResponse;
 import com.mit.law.model.Law;
+import com.mit.law.model.Notification;
 import com.mit.law.taglib.Tag;
 import com.mit.law.taglib.TagView;
 import com.mit.law.view.fragments.LawsFragment;
+import com.mit.law.view.fragments.NotificationFragment;
 import com.mit.lawyered.R;
 
 import java.util.ArrayList;
@@ -35,9 +38,11 @@ import java.util.List;
 public class Home extends AppCompatActivity {
     BottomNavigationView bttmView;
     RecyclerView lawsView;
+
     boolean lawsFragDisplayed = false;
     boolean profFragDisplayed = false;
 
+    AutoCompleteTextView searchView;
     TagView tags;
 
     public static List<String> allTags = new ArrayList<String>(){{
@@ -47,7 +52,7 @@ public class Home extends AppCompatActivity {
 
 
 
-    AutoCompleteTextView searchView;
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -77,20 +82,17 @@ public class Home extends AppCompatActivity {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()){
                             case R.id.menu_laws:
-                                selectedFragment=LawsFragment.newInstance(new ArrayList<Law>());
-                                lawsFragDisplayed=true;
+                                getLaws();
                                 break;
                             case R.id.menu_alerts:
-                                selectedFragment=null;
+                                getNotifications();
                                 break;
 
                             case R.id.menu_profiles:
                                 selectedFragment=null;
                                 break;
                         }
-                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame,selectedFragment);
-                        transaction.commit();
+
 
                         return true;
                     }
@@ -150,10 +152,35 @@ public class Home extends AppCompatActivity {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame, frag);//have to select the first fragment
                 transaction.commit();
+                lawsFragDisplayed =true;
+                profFragDisplayed =false;
 
             }
         },getStringTags(tags.getTags()));
     }
+
+    public void getProfiles(){
+
+    }
+
+    public void getNotifications(){
+        ReadNotificationController notificationController = new ReadNotificationController(new OnResponse() {
+            @Override
+            public void responded(Object obj) {
+                List<Notification> list = ((List<Notification>) obj);
+                Fragment frag = NotificationFragment.newInstance(list);
+
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame,frag);
+                transaction.commit();
+                Log.w("Notifications",list.size()+" size");
+                lawsFragDisplayed = false;
+                profFragDisplayed = false;
+            }
+        });
+    }
+
+
 
     private List<String> getStringTags(List<Tag> tags){
         List<String> stringTags = new ArrayList<>();
