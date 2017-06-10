@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "948843539171",
+    "firebase_url": "https://lawyered-853a6.firebaseio.com",
+    "project_id": "lawyered-853a6",
+    "storage_bucket": "lawyered-853a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948843539171:android:c39cd81600d216f5",
+        "android_client_info": {
+          "package_name": "com.mit.law"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948843539171-mlg283tr5revjmn22kp5nqmal1vsb09h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mit.law",
+            "certificate_hash": "5e1b2bf0bbc63846f5352e7155b56d846430974f"
+          }
+        },
+        {
+          "client_id": "948843539171-qek5s85auddlgophbg5pl02jta14o1rb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH4ZbfQLvflRRxDTUpXN5TI5YnPAl_S4s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948843539171-qek5s85auddlgophbg5pl02jta14o1rb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
