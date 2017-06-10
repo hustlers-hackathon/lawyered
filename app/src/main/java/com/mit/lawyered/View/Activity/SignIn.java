@@ -1,7 +1,9 @@
-package com.mit.lawyered;
+package com.mit.lawyered.View.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.mit.lawyered.R;
 
 public class SignIn extends AppCompatActivity {
 
