@@ -31,6 +31,7 @@ public class Clicks_on_law_dialog extends Activity {
                 String message = msg.getText().toString();
                 String lawID = (String)getIntent().getExtras().get("LAW_ID");
                 RequestController requestController = new RequestController(lawID,message);
+                finish();
             }
         });
 
