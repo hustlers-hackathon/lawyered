@@ -2,14 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_home"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"
         android:title="@string/menu_law"
         />
     <item
         android:id="@+id/menu_search"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"
         android:title="@string/menu_alerts" />
 
     <item
         android:id="@+id/menu_notifications"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"
         android:title="@string/menu_profiles" />
 </menu>
 

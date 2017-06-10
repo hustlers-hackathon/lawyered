@@ -5,5 +5,5 @@ package com.mit.law.controller.interfaces;
  */
 
 public interface OnResponseLaw {
-    public void responded(Object law);
+    public void respondedLaw(Object law);
 }

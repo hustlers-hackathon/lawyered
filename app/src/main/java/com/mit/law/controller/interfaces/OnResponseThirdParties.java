@@ -5,5 +5,5 @@ package com.mit.law.controller.interfaces;
  */
 
 public interface OnResponseThirdParties {
-    public void responded(Object third);
+    public void respondedThird(Object third);
 }
