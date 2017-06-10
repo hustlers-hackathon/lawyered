@@ -23,6 +23,7 @@ public class AcceptRequestController {
         String email=mAuth.getCurrentUser().getEmail();
         int index=email.indexOf("@");
         email=email.substring(0,index);
+
         notification.setUserId(notifi.getUserId());
         notification.setStatus(0);
         notification.setType("caseAccept");
@@ -32,6 +33,7 @@ public class AcceptRequestController {
         notification.setLbid(notifi.getLbid());
         notification.setLawyerID(notifi.getLawyerID());
         String key=mAccept.push().getKey();
+        notification.setNid(key);
         mAccept.child(key).setValue(notification);
 
     }
