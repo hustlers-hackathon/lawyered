@@ -26,7 +26,7 @@ public class SeeNotificationController implements OnResponse,OnResponseLaw {
 
     public SeeNotificationController(Notification notifi){
         this.n=notifi;
-        Log.d("Look NID :",n.getNid());
+        Log.d("Look NID :",n.getNid()+" asd");
         lawBrokenForNotificationController=new LawBrokenForNotificationController(this,n);
         //mNotify= FirebaseDatabase.getInstance().getReference().child("notifications");
     }
