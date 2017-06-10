@@ -14,8 +14,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Toast;
 
 import com.mit.law.controller.adapter.LawsFragmentAdapter;
+import com.mit.law.controller.firebase.LawsForTagListController;
+import com.mit.law.controller.interfaces.OnResponse;
+import com.mit.law.model.Law;
 import com.mit.law.taglib.Tag;
 import com.mit.law.taglib.TagView;
 import com.mit.law.view.fragments.LawsFragment;
@@ -52,13 +56,14 @@ public class Home extends AppCompatActivity {
         Toolbar tool = (Toolbar)findViewById(R.id.mainToolbar);
         setSupportActionBar(tool);
 
-        lawsView = (RecyclerView)findViewById(R.id.rv_laws);
+
 
         tags = (TagView) findViewById(R.id.tagGroup);
         tags.setOnTagDeleteListener(new TagView.OnTagDeleteListener() {
             @Override
             public void onTagDeleted(TagView view, Tag tag, int position) {
                 tags.remove(position);
+                if(lawsFragDisplayed)getLaws();
             }
         });
 
@@ -72,7 +77,8 @@ public class Home extends AppCompatActivity {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()){
                             case R.id.menu_laws:
-                                selectedFragment=LawsFragment.newInstance();
+                                selectedFragment=LawsFragment.newInstance(new ArrayList<Law>());
+                                lawsFragDisplayed=true;
                                 break;
                             case R.id.menu_alerts:
                                 selectedFragment=null;
@@ -85,6 +91,7 @@ public class Home extends AppCompatActivity {
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame,selectedFragment);
                         transaction.commit();
+
                         return true;
                     }
 
@@ -94,7 +101,7 @@ public class Home extends AppCompatActivity {
         searchView = (AutoCompleteTextView) findViewById(R.id.searchView);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,allTags);
         searchView.setAdapter(adapter);
-
+        lawsFragDisplayed = true;
         searchView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -116,18 +123,45 @@ public class Home extends AppCompatActivity {
                     tags.addTag(tag);
                     Log.w("Here ","Adding tag");
                     searchView.setText("");
+                    if(lawsFragDisplayed){
+                        getLaws();
+                        Log.w(" test","get Laws()");
+                    }
                 }
             }
         });
 
         //manully display the first fragment when activity loads
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame, LawsFragment.newInstance());//have to select the first fragment
-        transaction.commit();
+        getLaws();
     }
 
     public void getLaws(){
-        
+        Log.w(" called ","getLaws()");
+
+
+        LawsForTagListController controller = new LawsForTagListController(new OnResponse() {
+            @Override
+            public void responded(Object obj) {
+                List<Law> lawList = ((List<Law>) obj);
+                Log.w(" Size of law List",lawList.size()+"");
+                Fragment frag = LawsFragment.newInstance(lawList);
+
+
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame, frag);//have to select the first fragment
+                transaction.commit();
+
+            }
+        },getStringTags(tags.getTags()));
+    }
+
+    private List<String> getStringTags(List<Tag> tags){
+        List<String> stringTags = new ArrayList<>();
+        for(Tag tag: tags){
+            stringTags.add(tag.text);
+        }
+        //Toast.makeText(getApplicationContext(), stringTags.get(0)+"",Toast.LENGTH_SHORT).show();
+        return stringTags;
     }
 
 }
