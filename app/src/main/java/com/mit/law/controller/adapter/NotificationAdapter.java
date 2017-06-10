@@ -9,11 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mit.law.model.Law;
+
 import com.mit.law.model.Notification;
 import com.mit.lawyered.R;
 
@@ -40,9 +40,48 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = getContext();
         View lawRow = LayoutInflater.from(context).inflate(R.layout.notifications_row,parent,false);
+        switch (viewType){
+            case 1://caseRequest
+                lawRow.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
+                    }
+                });
+                break;
+            case 2://caseAccept
+                lawRow.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+                break;
+
+            case 3://location
+                lawRow.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+                break;
+        }
         ViewHolder viewHolder = new ViewHolder(lawRow);
         return viewHolder;
+    }
+
+    @Override
+    public int getItemViewType(int pos){
+        Notification notification = notificationList.get(pos);
+        if(notification.getType().equalsIgnoreCase("caseRequest")){
+            return 1;
+        }else if(notification.getType().equalsIgnoreCase("caseAccept")){
+            return 2;
+        }else if(notification.getType().equalsIgnoreCase("location")){
+            return 3;
+        }
+        return 0;
     }
 
     @Override

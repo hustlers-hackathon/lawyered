@@ -1,6 +1,8 @@
 package com.mit.law.controller.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.mit.law.model.ThirdParties;
+import com.mit.law.view.activity.ProfileDetailsActivity;
 import com.mit.lawyered.R;
 
 import java.util.List;
+
+import static com.mit.lawyered.R.id.btnViewMore;
 
 /**
  * Created by Ahmed on 6/10/2017.
@@ -42,10 +47,21 @@ public class ThirdPartyAdapter extends RecyclerView.Adapter<ThirdPartyAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ThirdParties thirdParty = thirdParties.get(position);
+        final ThirdParties thirdParty = thirdParties.get(position);
 
-        //holder.profName.setText(thirdParty.);
-        //holder.profRate.setText(thirdParty.);
+        holder.profName.setText(thirdParty.getName());
+        holder.profRate.setText(thirdParty.getReviewAvg()+"");
+        holder.shortDesc.setText(thirdParty.getDesc());
+        holder.btnViewMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ProfileDetailsActivity.class);
+                Bundle extras = new Bundle();
+                extras.putParcelable("Third_Party",thirdParty);
+                intent.putExtras(extras);
+                getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -64,7 +80,7 @@ public class ThirdPartyAdapter extends RecyclerView.Adapter<ThirdPartyAdapter.Vi
 
             profName = (TextView) itemView.findViewById(R.id.tvProfName);
             profRate = (TextView) itemView.findViewById(R.id.tvProfRate);
-            shortDesc = (TextView) itemView.findViewById(R.id.tvShortDescr);
+            shortDesc = (TextView) itemView.findViewById(R.id.tvProfShort);
             btnViewMore = (Button) itemView.findViewById(R.id.btnViewFull);
         }
     }

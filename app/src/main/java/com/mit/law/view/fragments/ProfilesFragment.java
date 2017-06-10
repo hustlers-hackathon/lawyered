@@ -24,7 +24,7 @@ public class ProfilesFragment extends Fragment {
     List<ThirdParties> thirdParties;
     RecyclerView thirdParty;
     public static ProfilesFragment newInstance(List<ThirdParties> thirdPartiesList){
-        ProfilesFragment profilesFragment = ProfilesFragment.newInstance(thirdPartiesList);
+        ProfilesFragment profilesFragment = new ProfilesFragment();
         profilesFragment.setThirdParties(thirdPartiesList);
         return profilesFragment;
     }

@@ -19,13 +19,17 @@ import android.widget.Toast;
 import com.mit.law.controller.adapter.LawsFragmentAdapter;
 import com.mit.law.controller.firebase.LawsForTagListController;
 import com.mit.law.controller.firebase.ReadNotificationController;
+import com.mit.law.controller.firebase.ThirdPartyListForTagsController;
 import com.mit.law.controller.interfaces.OnResponse;
+import com.mit.law.controller.interfaces.OnResponseThirdParties;
 import com.mit.law.model.Law;
 import com.mit.law.model.Notification;
+import com.mit.law.model.ThirdParties;
 import com.mit.law.taglib.Tag;
 import com.mit.law.taglib.TagView;
 import com.mit.law.view.fragments.LawsFragment;
 import com.mit.law.view.fragments.NotificationFragment;
+import com.mit.law.view.fragments.ProfilesFragment;
 import com.mit.lawyered.R;
 
 import java.util.ArrayList;
@@ -69,6 +73,7 @@ public class Home extends AppCompatActivity {
             public void onTagDeleted(TagView view, Tag tag, int position) {
                 tags.remove(position);
                 if(lawsFragDisplayed)getLaws();
+                else if(profFragDisplayed)getProfiles();
             }
         });
 
@@ -89,7 +94,7 @@ public class Home extends AppCompatActivity {
                                 break;
 
                             case R.id.menu_profiles:
-                                selectedFragment=null;
+                                getProfiles();
                                 break;
                         }
 
@@ -128,6 +133,8 @@ public class Home extends AppCompatActivity {
                     if(lawsFragDisplayed){
                         getLaws();
                         Log.w(" test","get Laws()");
+                    }else if(profFragDisplayed){
+                        getProfiles();
                     }
                 }
             }
@@ -160,7 +167,19 @@ public class Home extends AppCompatActivity {
     }
 
     public void getProfiles(){
+        ThirdPartyListForTagsController controller = new ThirdPartyListForTagsController(new OnResponseThirdParties() {
+            @Override
+            public void respondedThird(Object third) {
+                List<ThirdParties> thirdPartiesList = ((List<ThirdParties>)third);
+                Fragment fragment = ProfilesFragment.newInstance(thirdPartiesList);
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame,fragment);
+                transaction.commit();
 
+                lawsFragDisplayed =false;
+                profFragDisplayed = true;
+            }
+        },getStringTags(tags.getTags()));
     }
 
     public void getNotifications(){
