@@ -5,13 +5,39 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mit.law.view.activity.Clicks_on_notification">
+    tools:context="com.mit.law.view.activity.Lawyer_clicks_on_notification">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvAccepted"
-        android:text="Mr. John Doe has accepted your case."/>
+        android:id="@+id/tvTitle"
+        android:padding="10dp"
+        android:text="Mr.John Doe has submitted a case that might interest you."/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvShowMsg"
+        android:padding="10dp"
+        android:text="Mr. X took a bribe at Restaurant Y."/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Respective Law: "
+        android:padding="10dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvBrokenLaw"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Broken Law"/>
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +57,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnSeeProfile"
             android:layout_margin="10dp"
-            android:text="See Profile"/>
+            android:text="Accept"/>
 
     </LinearLayout>
 

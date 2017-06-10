@@ -25,7 +25,7 @@
         <activity
             android:name="com.mit.law.view.activity.Clicks_on_law_dialog"
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
-        <activity android:name="com.mit.law.view.activity.Clicks_on_notification"></activity>
+        <activity android:name="com.mit.law.view.activity.Lawyer_clicks_on_notification"></activity>
 =======
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
