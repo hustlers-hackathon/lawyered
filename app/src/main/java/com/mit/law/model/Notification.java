@@ -18,6 +18,10 @@ public class Notification implements Parcelable {
     private String lawShortDesc;
     private String lawyerID;
 
+    public Notification(){
+
+    }
+
 
     protected Notification(Parcel in) {
         nid = in.readString();

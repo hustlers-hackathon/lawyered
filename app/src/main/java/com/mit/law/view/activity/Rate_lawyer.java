@@ -30,6 +30,7 @@ public class Rate_lawyer extends Activity {
             @Override
             public void onClick(View v) {
                 //do something with value
+                finish();
             }
         });
 
