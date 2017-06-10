@@ -23,9 +23,6 @@
             android:hint="Enter key words"
             android:textSize="20sp"/>
 
-        
-
-
     </LinearLayout>
 
         <FrameLayout
@@ -36,7 +33,7 @@
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navView"
-            android:layout_width="match_parent"
+            android:layout_width="635dp"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             design:menu="@menu/bottom_nav_items" />
