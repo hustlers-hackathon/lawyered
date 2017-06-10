@@ -1,10 +1,13 @@
 package com.mit.law.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by ASUS on 6/10/2017.
  */
 
-public class Notification {
+public class Notification implements Parcelable {
     private String nid;
     private String desc;
     private String type;
@@ -15,6 +18,30 @@ public class Notification {
     private String lawShortDesc;
     private String lawyerID;
 
+
+    protected Notification(Parcel in) {
+        nid = in.readString();
+        desc = in.readString();
+        type = in.readString();
+        lbid = in.readString();
+        userId = in.readString();
+        status = in.readInt();
+        lawBrokenDesc = in.readString();
+        lawShortDesc = in.readString();
+        lawyerID = in.readString();
+    }
+
+    public static final Creator<Notification> CREATOR = new Creator<Notification>() {
+        @Override
+        public Notification createFromParcel(Parcel in) {
+            return new Notification(in);
+        }
+
+        @Override
+        public Notification[] newArray(int size) {
+            return new Notification[size];
+        }
+    };
 
     public String getNid() {
         return nid;
@@ -86,5 +113,23 @@ public class Notification {
 
     public void setLawyerID(String lawyerID) {
         this.lawyerID = lawyerID;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nid);
+        dest.writeString(desc);
+        dest.writeString(type);
+        dest.writeString(lbid);
+        dest.writeString(userId);
+        dest.writeInt(status);
+        dest.writeString(lawBrokenDesc);
+        dest.writeString(lawShortDesc);
+        dest.writeString(lawyerID);
     }
 }

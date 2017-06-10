@@ -5,6 +5,8 @@ package com.mit.law.controller.adapter;
  */
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +17,12 @@ import android.widget.TextView;
 
 
 import com.mit.law.controller.firebase.SeeNotificationController;
+import com.mit.law.controller.firebase.ThirdPartyController;
+import com.mit.law.controller.interfaces.OnResponse;
 import com.mit.law.model.Notification;
+import com.mit.law.model.ThirdParties;
+import com.mit.law.view.activity.LocationRulesActivity;
+import com.mit.law.view.activity.ProfileDetailsActivity;
 import com.mit.lawyered.R;
 
 import java.util.List;
@@ -41,53 +48,68 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = getContext();
         View lawRow = LayoutInflater.from(context).inflate(R.layout.notifications_row,parent,false);
-        switch (viewType){
-            case 1://caseRequest
-                lawRow.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        new SeeNotificationController()
-                    }
-                });
-                break;
-            case 2://caseAccept
-                lawRow.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
 
-                    }
-                });
-                break;
-
-            case 3://location
-                lawRow.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
-                break;
-        }
         ViewHolder viewHolder = new ViewHolder(lawRow);
         return viewHolder;
     }
 
     @Override
-    public int getItemViewType(int pos){
-        Notification notification = notificationList.get(pos);
-        if(notification.getType().equalsIgnoreCase("caseRequest")){
-            return 1;
-        }else if(notification.getType().equalsIgnoreCase("caseAccept")){
-            return 2;
-        }else if(notification.getType().equalsIgnoreCase("location")){
-            return 3;
-        }
-        return 0;
-    }
-
-    @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Notification noti = notificationList.get(position);
+        final Notification noti = notificationList.get(position);
+        int type=0;
+        if(noti.getType().equalsIgnoreCase("caseRequest")){
+            type=1;
+        }else if(noti.getType().equalsIgnoreCase("caseAccept")){
+            type =2;
+        }else if(noti.getType().equalsIgnoreCase("location")){
+            type = 3;
+        }
+
+        switch (type){
+            case 1://caseRequest
+                holder.item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new SeeNotificationController(noti);
+                    }
+                });
+                break;
+            case 2://caseAccept
+                holder.item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new SeeNotificationController(noti);
+                        String lawyerID = noti.getLawyerID();
+                        new ThirdPartyController(new OnResponse() {
+                            @Override
+                            public void responded(Object obj) {
+                                ThirdParties lawyer = (ThirdParties)obj;
+                                Intent intent = new Intent(getContext(), ProfileDetailsActivity.class);
+                                Bundle extra = new Bundle();
+                                extra.putParcelable("Lawyer",lawyer);
+                                intent.putExtras(extra);
+                                getContext().startActivity(intent);
+                            }
+                        },lawyerID);
+                    }
+                });
+                break;
+
+            case 3://location
+                holder.item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new SeeNotificationController(noti);
+                        Intent intent = new Intent(getContext(), LocationRulesActivity.class);
+                        Bundle extras = new Bundle();
+                        extras.putParcelable("noti",noti);
+                        intent.putExtras(extras);
+                        getContext().startActivity(intent);
+                    }
+                });
+                break;
+        }
+
 
         //set data from the law
         holder.title.setText(noti.getType());
@@ -112,8 +134,10 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         ImageView imgIcon;
         TextView  title;
         TextView desc;
+        View item;
         public ViewHolder(View itemView) {
             super(itemView);
+            item = itemView;
             title = (TextView) itemView.findViewById(R.id.tvNotTitle);
             desc = (TextView) itemView.findViewById(R.id.tvNotDescription);
             imgIcon = (ImageView)itemView.findViewById(R.id.imgNotIcon);
