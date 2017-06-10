@@ -23,13 +23,13 @@ public class SeeNotificationController implements OnResponse,OnResponseLaw {
 
     public SeeNotificationController(Notification notifi){
         this.n=notifi;
-        LawBrokenForNotificationController lawBrokenForNotificationController=new LawBrokenForNotificationController(this,n);
+        lawBrokenForNotificationController=new LawBrokenForNotificationController(this,n);
     }
 
     @Override
     public void responded(Object lawBroken) {
         lawb=(LawBroken)lawBroken;
-        FindLawBrokenController findLawBrokenController=new FindLawBrokenController(this,lawb,n);
+      findLawBrokenController=new FindLawBrokenController(this,lawb,n);
         Log.d("Description :",lawb.getDescription());
     }
 
