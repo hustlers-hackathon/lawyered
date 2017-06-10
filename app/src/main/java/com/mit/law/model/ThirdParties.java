@@ -8,6 +8,7 @@ import java.util.List;
 
 public class ThirdParties {
     private String tpid;
+    private String name;
     private String mobile;
     private String office;
     private String desc;
@@ -79,5 +80,13 @@ public class ThirdParties {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
