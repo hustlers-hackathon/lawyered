@@ -2,6 +2,7 @@ package com.mit.law.controller.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.mit.law.model.Law;
 import com.mit.law.view.activity.Clicks_on_law_dialog;
+import com.mit.law.view.activity.LawDetailsActivity;
 import com.mit.lawyered.R;
 
 import java.util.List;
@@ -43,7 +45,7 @@ public class LawsFragmentAdapter extends RecyclerView.Adapter<LawsFragmentAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Law law = lawsList.get(position);
+        final Law law = lawsList.get(position);
 
         //set data from the law
         holder.title.setText(law.getTitle());
@@ -53,8 +55,10 @@ public class LawsFragmentAdapter extends RecyclerView.Adapter<LawsFragmentAdapte
             @Override
             public void onClick(View v) {
                 //code to mark the law broken
-                Intent intent = new Intent(v.getContext(),Clicks_on_law_dialog.class);
-                v.getContext().startActivity(intent);
+                Intent intent = new Intent(getContext(),Clicks_on_law_dialog.class);
+                Bundle extras = new Bundle();
+                extras.putString("LAW_ID",law.getLawId());
+                getContext().startActivity(intent);
 
             }
         });
@@ -63,7 +67,11 @@ public class LawsFragmentAdapter extends RecyclerView.Adapter<LawsFragmentAdapte
             @Override
             public void onClick(View v) {
                 //launch law details activity
-
+                Intent intent = new Intent(getContext(),LawDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("LAW",law);
+                intent.putExtras(bundle);
+                getContext().startActivity(intent);
             }
         });
 

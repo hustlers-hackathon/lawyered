@@ -1,12 +1,15 @@
 package com.mit.law.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
  * Created by ASUS on 6/10/2017.
  */
 
-public class Law {
+public class Law implements Parcelable{
     private String lawId;
     private String title;
     private String shortDesc;
@@ -14,6 +17,31 @@ public class Law {
     private String quote;
     private List <String> tags;
 
+    public Law(){
+
+    }
+
+
+    protected Law(Parcel in) {
+        lawId = in.readString();
+        title = in.readString();
+        shortDesc = in.readString();
+        fullDesc = in.readString();
+        quote = in.readString();
+        tags = in.createStringArrayList();
+    }
+
+    public static final Creator<Law> CREATOR = new Creator<Law>() {
+        @Override
+        public Law createFromParcel(Parcel in) {
+            return new Law(in);
+        }
+
+        @Override
+        public Law[] newArray(int size) {
+            return new Law[size];
+        }
+    };
 
     public String getLawId() {
         return lawId;
@@ -61,5 +89,20 @@ public class Law {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(lawId);
+        dest.writeString(title);
+        dest.writeString(shortDesc);
+        dest.writeString(fullDesc);
+        dest.writeString(quote);
+        dest.writeStringList(tags);
     }
 }

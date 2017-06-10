@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.mit.law.controller.firebase.RequestController;
 import com.mit.lawyered.R;
 
 public class Clicks_on_law_dialog extends Activity {
@@ -17,16 +18,19 @@ public class Clicks_on_law_dialog extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clicks_on_law_dialog);
 
-        EditText msg = (EditText) findViewById(R.id.etMessage);
+        final EditText msg = (EditText) findViewById(R.id.etMessage);
         Button send = (Button) findViewById(R.id.btnSend);
         Button dismiss = (Button) findViewById(R.id.btnDismiss);
 
-        String message = msg.getText().toString();
+
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //code to send the message
+                String message = msg.getText().toString();
+                String lawID = (String)getIntent().getExtras().get("LAW_ID");
+                RequestController requestController = new RequestController(lawID,message);
             }
         });
 

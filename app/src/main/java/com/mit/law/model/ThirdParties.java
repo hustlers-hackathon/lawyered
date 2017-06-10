@@ -1,12 +1,15 @@
 package com.mit.law.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
  * Created by ASUS on 6/10/2017.
  */
 
-public class ThirdParties {
+public class ThirdParties implements Parcelable {
     private String tpid;
     private String name;
     private String mobile;
@@ -17,6 +20,33 @@ public class ThirdParties {
     private long rateCount;
     private List<String> tags;
 
+    public ThirdParties(){
+
+    }
+
+    protected ThirdParties(Parcel in) {
+        tpid = in.readString();
+        name = in.readString();
+        mobile = in.readString();
+        office = in.readString();
+        desc = in.readString();
+        revenueType = in.readString();
+        reviewAvg = in.readDouble();
+        rateCount = in.readLong();
+        tags = in.createStringArrayList();
+    }
+
+    public static final Creator<ThirdParties> CREATOR = new Creator<ThirdParties>() {
+        @Override
+        public ThirdParties createFromParcel(Parcel in) {
+            return new ThirdParties(in);
+        }
+
+        @Override
+        public ThirdParties[] newArray(int size) {
+            return new ThirdParties[size];
+        }
+    };
 
     public String getTpid() {
         return tpid;
@@ -88,5 +118,23 @@ public class ThirdParties {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(tpid);
+        dest.writeString(name);
+        dest.writeString(mobile);
+        dest.writeString(office);
+        dest.writeString(desc);
+        dest.writeString(revenueType);
+        dest.writeDouble(reviewAvg);
+        dest.writeLong(rateCount);
+        dest.writeStringList(tags);
     }
 }
