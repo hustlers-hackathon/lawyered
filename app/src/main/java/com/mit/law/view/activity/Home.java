@@ -1,9 +1,10 @@
 package com.mit.law.view.activity;
 
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -11,12 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Toast;
 
-import com.mit.law.controller.adapter.LawsFragmentAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.mit.law.controller.firebase.LawsForTagListController;
 import com.mit.law.controller.firebase.ReadNotificationController;
 import com.mit.law.controller.firebase.ThirdPartyListForTagsController;
@@ -43,6 +44,8 @@ public class Home extends AppCompatActivity {
     BottomNavigationView bttmView;
     RecyclerView lawsView;
 
+    FirebaseAuth mAuth;
+
     boolean lawsFragDisplayed = false;
     boolean profFragDisplayed = false;
 
@@ -64,6 +67,8 @@ public class Home extends AppCompatActivity {
         bttmView = (BottomNavigationView)findViewById(R.id.navView);
         Toolbar tool = (Toolbar)findViewById(R.id.mainToolbar);
         setSupportActionBar(tool);
+
+        mAuth=FirebaseAuth.getInstance();
 
 
 
@@ -208,6 +213,29 @@ public class Home extends AppCompatActivity {
         }
         //Toast.makeText(getApplicationContext(), stringTags.get(0)+"",Toast.LENGTH_SHORT).show();
         return stringTags;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu  );
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.action_logout){
+            logOut();
+            Intent loginIntent=new Intent(Home.this,SignIn.class);
+            loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(loginIntent);
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void logOut() {
+        mAuth.signOut();
     }
 
 }
