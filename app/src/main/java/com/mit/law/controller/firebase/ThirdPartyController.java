@@ -31,7 +31,7 @@ public  class ThirdPartyController {
     public OnResponse response;
 
 
-    
+
     //Get lawyer by id
     public ThirdPartyController(OnResponse responder, final String lawyerId){
         response = responder;
