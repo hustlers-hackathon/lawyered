@@ -84,6 +84,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 holder.item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         new SeeNotificationController(noti);
                         String lawyerID = noti.getLawyerID();
                         new ThirdPartyController(new OnResponse() {

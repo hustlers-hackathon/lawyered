@@ -22,11 +22,11 @@ public class ReadNotificationController {
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
     OnResponse response;
-    List<Notification>nList=new ArrayList<>();
+    List<Notification>nList;
     String id;
 
     public ReadNotificationController(OnResponse responder){
-
+        nList=new ArrayList<>();
         this.response=responder;
         mAuth=FirebaseAuth.getInstance();
         mDatabase=FirebaseDatabase.getInstance().getReference().child("notifications");

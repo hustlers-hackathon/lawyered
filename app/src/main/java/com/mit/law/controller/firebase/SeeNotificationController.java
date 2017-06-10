@@ -17,31 +17,47 @@ public class SeeNotificationController implements OnResponse,OnResponseLaw {
     LawBrokenForNotificationController lawBrokenForNotificationController;
     FindLawBrokenController findLawBrokenController;
 
-    Notification n;    Law law;
 
     LawBroken lawb;
+    Law law;
+    //DatabaseReference mNotify;
+    Notification n;
 
 
     public SeeNotificationController(Notification notifi){
         this.n=notifi;
+        Log.d("Look NID :",n.getNid()+" asd");
         lawBrokenForNotificationController=new LawBrokenForNotificationController(this,n);
+        //mNotify= FirebaseDatabase.getInstance().getReference().child("notifications");
     }
 
     @Override
     public void responded(Object lawBroken) {
+
         lawb=(LawBroken)lawBroken;
-      findLawBrokenController=new FindLawBrokenController(this,lawb,n);
-        Log.d("Description :",lawb.getDescription());
+        findLawBrokenController=new FindLawBrokenController(this,lawb,n);
+    /*  notification=new Notification();
+        notification.setLbid(lawb.getLbid());
+        notification.setUserId(lawb.getUserId());
+        notification.setStatus(0);
+        notification.setType("caseAccept");
+        notification.setLawBrokenDesc(lawb.getDescription());*/
+        Log.d("Description: ",lawb.getDescription());
     }
 
     @Override
     public void respondedLaw(Object acceptN) {
         law=(Law)acceptN;
-        Log.d("Law is :",law.getShortDesc());
+        Log.d("Law is ",law.getShortDesc());
+       /* notification.setLawShortDesc(law.getShortDesc());
+        String keyN=mNotify.push().getKey();
+        notification.setNid(keyN);
+        mNotify.child(keyN).setValue(notification);*/
     }
 
     public Notification getAccept(){
-        Log.d("3 Law is :",n.getLawShortDesc());
+        Log.d("Law is ",n.getLawShortDesc());
         return n;
     }
+
 }
