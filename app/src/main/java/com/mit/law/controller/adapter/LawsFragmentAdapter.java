@@ -58,6 +58,7 @@ public class LawsFragmentAdapter extends RecyclerView.Adapter<LawsFragmentAdapte
                 Intent intent = new Intent(getContext(),Clicks_on_law_dialog.class);
                 Bundle extras = new Bundle();
                 extras.putString("LAW_ID",law.getLawId());
+                intent.putExtras(extras);
                 getContext().startActivity(intent);
 
             }
