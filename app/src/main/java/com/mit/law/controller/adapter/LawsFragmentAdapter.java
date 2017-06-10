@@ -1,6 +1,7 @@
 package com.mit.law.controller.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.mit.law.model.Law;
+import com.mit.law.view.activity.Clicks_on_law_dialog;
 import com.mit.lawyered.R;
 
 import java.util.List;
@@ -51,6 +53,8 @@ public class LawsFragmentAdapter extends RecyclerView.Adapter<LawsFragmentAdapte
             @Override
             public void onClick(View v) {
                 //code to mark the law broken
+                Intent intent = new Intent(v.getContext(),Clicks_on_law_dialog.class);
+                v.getContext().startActivity(intent);
 
             }
         });
