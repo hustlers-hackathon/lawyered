@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.mit.law.view.activity.clicks_on_law_dialog">
+    tools:context="com.mit.law.view.activity.Clicks_on_law_dialog">
 
     <TextView
         android:layout_width="wrap_content"
