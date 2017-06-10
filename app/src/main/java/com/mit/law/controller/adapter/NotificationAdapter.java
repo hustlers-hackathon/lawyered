@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.mit.law.controller.firebase.SeeNotificationController;
 import com.mit.law.model.Notification;
 import com.mit.lawyered.R;
 
@@ -45,7 +46,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 lawRow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        new SeeNotificationController()
                     }
                 });
                 break;

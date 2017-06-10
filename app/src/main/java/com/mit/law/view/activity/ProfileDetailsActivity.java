@@ -19,12 +19,13 @@ public class ProfileDetailsActivity extends AppCompatActivity{
     ThirdParties thirdParty;
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
+        setContentView(R.layout.profile_in_full);
         thirdParty = (ThirdParties)getIntent().getExtras().get("Third_Party");
 
         TextView name = (TextView)findViewById(R.id.tvName);
         TextView rate = (TextView)findViewById(R.id.tvRate);
         TagView tagGroup = (TagView)findViewById(R.id.ProfileTagsGroup);
-        TextView shortDesc = (TextView)findViewById(R.id.tvShortDescr);
+        TextView shortDesc = (TextView)findViewById(R.id.tvLawyerShortDescr);
 
         Button btnContact = (Button)findViewById(R.id.btnContact);
         Button btnRate = (Button)findViewById(R.id.btnRate);

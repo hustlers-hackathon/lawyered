@@ -20,19 +20,17 @@
         </activity>
         <activity
             android:name="com.mit.law.view.activity.Home"
-<<<<<<< HEAD
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name="com.mit.law.view.activity.Clicks_on_law_dialog"
-            android:theme="@style/Theme.AppCompat.Light.Dialog" />
-        <activity android:name="com.mit.law.view.activity.Clicks_on_notification"></activity>
-=======
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
 
         <activity android:name="com.mit.law.view.activity.Clicks_on_law_dialog"
             android:theme="@style/Theme.AppCompat.Light.Dialog"/>
         <activity android:name="com.mit.law.view.activity.LawDetailsActivity" />
->>>>>>> ae97a24215fe99fa5c68f97e2ab533e1c874dd73
+        <activity android:name="com.mit.law.view.activity.ProfileDetailsActivity">
+
+        </activity>
+        
+
     </application>
 
 </manifest>
