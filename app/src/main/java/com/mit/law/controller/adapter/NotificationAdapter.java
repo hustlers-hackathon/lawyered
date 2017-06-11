@@ -71,7 +71,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 holder.item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        new SeeNotificationController(noti);
+                        new SeeNotificationController(noti);//here put the new reponder and rest of the code into the if condition
                         Intent intent = new Intent(getContext(), Lawyer_clicks_on_notification.class);
                         Bundle extra = new Bundle();
                         extra.putParcelable("noti",noti);

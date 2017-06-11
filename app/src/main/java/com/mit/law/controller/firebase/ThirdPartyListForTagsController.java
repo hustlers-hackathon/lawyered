@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ThirdPartyListForTagsController {
     DatabaseReference mDatabaseLaw;
-    List <ThirdParties> lawyerDescList=new ArrayList<>();
+    List <ThirdParties> lawyerDescList;
     public OnResponseThirdParties response;
     List<String>list;
 
@@ -31,6 +31,7 @@ public class ThirdPartyListForTagsController {
         mDatabaseLaw.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                lawyerDescList=new ArrayList<>();
                 if(list.size()==0){
                     for (DataSnapshot lawyerDatasnapshot:dataSnapshot.getChildren()){
                         ThirdParties party=lawyerDatasnapshot.getValue(ThirdParties.class);

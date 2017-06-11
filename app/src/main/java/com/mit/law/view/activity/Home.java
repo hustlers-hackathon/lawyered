@@ -101,7 +101,7 @@ public class Home extends AppCompatActivity {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()){
                             case R.id.menu_laws:
-                                //addLocationTags();
+                                addLocationTags();
                                 getLaws();
                                 break;
                             case R.id.menu_alerts:
@@ -110,6 +110,7 @@ public class Home extends AppCompatActivity {
                                 break;
 
                             case R.id.menu_profiles:
+                                tags.removeAll();
                                 getProfiles();
                                 break;
                         }
@@ -176,7 +177,7 @@ public class Home extends AppCompatActivity {
 
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame, frag);//have to select the first fragment
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
                 lawsFragDisplayed =true;
                 profFragDisplayed =false;
 
@@ -208,7 +209,7 @@ public class Home extends AppCompatActivity {
                 Fragment frag = NotificationFragment.newInstance(list);
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame, frag);
-                transaction.commitAllowingStateLoss();
+                transaction.commit();
 
 
 

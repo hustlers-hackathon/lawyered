@@ -28,8 +28,8 @@ public class LocationRulesActivity extends AppCompatActivity {
 
         Notification noti = (Notification) getIntent().getExtras().get("noti");
         locationRules = new LocationRules();
-        locationRules.setShortDesc(noti.getLawBrokenDesc());
-        locationRules.setFullDesc(noti.getDesc());
+        locationRules.setShortDesc(noti.getDesc());
+        locationRules.setFullDesc(noti.getLawBrokenDesc());
 
 
         title = (TextView)findViewById(R.id.tvTitleLaw);

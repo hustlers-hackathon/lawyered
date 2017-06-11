@@ -57,7 +57,7 @@ public class ThirdPartyAdapter extends RecyclerView.Adapter<ThirdPartyAdapter.Vi
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ProfileDetailsActivity.class);
                 Bundle extras = new Bundle();
-                extras.putParcelable("Third_Party",thirdParty);
+                extras.putParcelable("Lawyer",thirdParty);
                 intent.putExtras(extras);
                 getContext().startActivity(intent);
             }
