@@ -52,6 +52,8 @@ public class Home extends AppCompatActivity {
     AutoCompleteTextView searchView;
     TagView tags;
 
+    List<Notification> notiList;
+
     public static List<String> allTags = new ArrayList<String>(){{
         add("Criminal");
         add("Murder");
@@ -96,6 +98,7 @@ public class Home extends AppCompatActivity {
                                 break;
                             case R.id.menu_alerts:
                                 getNotifications();
+
                                 break;
 
                             case R.id.menu_profiles:
@@ -193,11 +196,14 @@ public class Home extends AppCompatActivity {
             public void responded(Object obj) {
                 List<Notification> list = ((List<Notification>) obj);
                 Fragment frag = NotificationFragment.newInstance(list);
-
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame,frag);
+                transaction.replace(R.id.frame, frag);
                 transaction.commit();
-                Log.w("Notifications",list.size()+" size");
+
+
+
+
+                //Log.w("Notifications",list.size()+" size");
                 lawsFragDisplayed = false;
                 profFragDisplayed = false;
             }
