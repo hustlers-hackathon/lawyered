@@ -198,7 +198,7 @@ public class Home extends AppCompatActivity {
                 Fragment frag = NotificationFragment.newInstance(list);
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame, frag);
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
 
 
 
