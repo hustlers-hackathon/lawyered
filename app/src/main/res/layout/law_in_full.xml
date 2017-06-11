@@ -65,7 +65,7 @@
         android:textSize="15sp"
         android:layout_marginTop="8dp"
         android:textColor="@color/colorPrimaryDark"
-        android:text="'Quote'"/>
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/wvFullLaw"
         android:layout_marginTop="10dp"
-        android:visibility="gone">
+        >
 
     </WebView>
 
