@@ -26,7 +26,7 @@ public class ReadNotificationController {
     String id;
 
     public ReadNotificationController(OnResponse responder){
-        nList=new ArrayList<>();
+
         this.response=responder;
         mAuth=FirebaseAuth.getInstance();
         mDatabase=FirebaseDatabase.getInstance().getReference().child("notifications");
@@ -35,6 +35,7 @@ public class ReadNotificationController {
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                nList=new ArrayList<>();
                 for(DataSnapshot partyDatasnapshot:dataSnapshot.getChildren()){
                     Log.d("NID","Description");
                     Notification notification=partyDatasnapshot.getValue(Notification.class);
