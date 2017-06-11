@@ -12,19 +12,25 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvTitle"
         android:padding="10dp"
-        android:text="Mr.John Doe has submitted a case that might interest you."/>
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="Lawyered"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvShowMsg"
         android:padding="10dp"
+        android:textSize="15sp"
         android:text="Mr. X took a bribe at Restaurant Y."/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Respective Law: "
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp"
         android:padding="10dp"/>
 
 
@@ -33,6 +39,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvBrokenLaw"
         android:padding="10dp"
+        android:textSize="15sp"
         android:layout_marginLeft="10dp"
         android:text="Broken Law"/>
 
@@ -46,18 +53,25 @@
         android:gravity="end">
 
         <Button
+            android:id="@+id/btnIgnore"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnIgnore"
             android:layout_margin="10dp"
-            android:text="Dismiss"/>
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginRight="20dp"
+            android:text="Dismiss" />
 
         <Button
+            android:id="@+id/btnSeeProfile"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnSeeProfile"
             android:layout_margin="10dp"
-            android:text="Accept"/>
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Accept" />
 
     </LinearLayout>
 

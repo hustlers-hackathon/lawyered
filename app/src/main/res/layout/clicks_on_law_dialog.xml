@@ -38,9 +38,8 @@
             android:layout_marginLeft="20dp"
             android:backgroundTint="@color/colorAccent"
             android:text="Dismiss"
-            android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp" />
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/btnSend"
@@ -49,9 +48,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorAccent"
             android:text="Send"
-            android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 
