@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvLawTitle"
             android:text="Title"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
             android:padding="5dp"/>
@@ -27,7 +27,7 @@
             android:id="@+id/tvShortDescr"
             android:text="Short Description"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="10sp"
+            android:textSize="13sp"
             android:padding="5dp"/>
 
         <LinearLayout
@@ -40,28 +40,28 @@
                 android:id="@+id/btnMark"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
-                android:background="@color/colorAccent"
+                android:backgroundTint="@color/colorAccent"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:text="Mark as Broken"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/btnView"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@color/colorAccent"
+                android:backgroundTint="@color/colorAccent"
                 android:text="View More"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
