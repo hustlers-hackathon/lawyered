@@ -20,7 +20,7 @@ import java.util.List;
 
 public class LawsForTagListController {
     DatabaseReference mDatabaseLaw;
-    List <Law> lawDescList=new ArrayList<>();
+    List <Law> lawDescList;
     public OnResponse response;
     List<String>list;
 
@@ -30,7 +30,9 @@ public class LawsForTagListController {
         this.response=responder;
         mDatabaseLaw.addValueEventListener(new ValueEventListener() {
             @Override
+
             public void onDataChange(DataSnapshot dataSnapshot) {
+                lawDescList=new ArrayList<Law>();
                 if(list.size()==0){
                     for (DataSnapshot lawDatasnapshot:dataSnapshot.getChildren()){
                         Law law=lawDatasnapshot.getValue(Law.class);
