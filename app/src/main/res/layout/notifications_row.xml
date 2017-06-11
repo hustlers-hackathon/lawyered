@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/imgNotIcon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_gravity="left"
             app:srcCompat="@drawable/notifications" />
         
@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content" 
                 android:id="@+id/tvNotTitle"
                 android:text="Notification Title"
-                android:textSize="12sp"
+                android:textSize="18sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 android:paddingTop="4dp"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tvNotDescription"
                 android:text="Description"
-                android:textSize="10sp"
+                android:textSize="13sp"
                 android:paddingTop="4dp"
                 android:paddingLeft="10dp"/>
             

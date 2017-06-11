@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cv_profile"
-        android:elevation="15dp">
+        android:elevation="25dp">
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimaryDark"
                     android:id="@+id/tvProfName"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tvProfShort"
                 android:layout_marginTop="5dp"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:text="Short Description" />
 
             <LinearLayout
@@ -62,13 +62,12 @@
                 android:id="@+id/btnViewFull"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:padding="5dp"
-                android:background="@color/colorAccent"
+                android:backgroundTint="@color/colorAccent"
                 android:text="View Full Profile"
                 android:textAllCaps="false"
-                android:textSize="14sp" />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
