@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.mit.law.controller.interfaces.OnResponse;
 import com.mit.law.controller.interfaces.OnResponseLaw;
-import com.mit.law.controller.interfaces.OnResponseThirdParties;
 import com.mit.law.model.Law;
 import com.mit.law.model.LawBroken;
 import com.mit.law.model.Notification;
@@ -24,10 +23,10 @@ public class SeeNotificationController implements OnResponse,OnResponseLaw {
     //DatabaseReference mNotify;
     Notification n;
 
-    OnResponseThirdParties on;
 
-    public SeeNotificationController(OnResponseThirdParties res,Notification notifi){
-        this.on=res;
+
+    public SeeNotificationController(Notification notifi){
+        
         this.n=notifi;
         Log.d("Look NID :",n.getNid()+" asd");
         lawBrokenForNotificationController=new LawBrokenForNotificationController(this,n);
@@ -57,7 +56,7 @@ public class SeeNotificationController implements OnResponse,OnResponseLaw {
         String keyN=mNotify.push().getKey();
         notification.setNid(keyN);
         mNotify.child(keyN).setValue(notification);*/
-       on.respondedThird(n);
+
     }
 
     public Notification getAccept(){
