@@ -21,9 +21,12 @@ import java.util.List;
 public class NotificationFragment extends Fragment {
     List<Notification> notificationList;
     RecyclerView notificationView;
+
+    public static NotificationFragment ins;
     public static NotificationFragment newInstance(List<Notification> notificationList){
         NotificationFragment notificationFragment = new NotificationFragment();
         notificationFragment.setNotificationList(notificationList);
+
         return notificationFragment;
     }
 
@@ -34,6 +37,8 @@ public class NotificationFragment extends Fragment {
     public void setNotificationList(List<Notification> notificationList) {
         this.notificationList = notificationList;
     }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){

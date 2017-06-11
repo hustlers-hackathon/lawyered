@@ -32,6 +32,7 @@ public class Lawyer_clicks_on_notification extends Activity {
             public void onClick(View v) {
                 //code to direct to the lawyer's profile
                 AcceptRequestController controller = new AcceptRequestController(noti);
+                finish();
             }
         });
 
