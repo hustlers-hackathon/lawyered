@@ -2,6 +2,7 @@ package com.mit.law.view.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -25,23 +26,28 @@ public class LocationRulesActivity extends AppCompatActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.law_in_full);
 
+        Notification noti = (Notification) getIntent().getExtras().get("noti");
+        locationRules = new LocationRules();
+        locationRules.setShortDesc(noti.getLawBrokenDesc());
+        locationRules.setFullDesc(noti.getDesc());
+
+
         title = (TextView)findViewById(R.id.tvTitleLaw);
         shortDescription = (TextView)findViewById(R.id.tvLawInShort);
         fullDescription = (WebView)findViewById(R.id.wvFullLaw);
 
-        title.setText("");
+        title.setText(noti.getLawShortDesc());
         shortDescription.setText(locationRules.getShortDesc());
 
-        Notification noti = (Notification) getIntent().getExtras().get("noti");
-        locationRules = new LocationRules();
-        locationRules.setShortDesc(noti.getLawShortDesc());
-        locationRules.setFullDesc(noti.getDesc());
 
+        Button btnMar = (Button)findViewById(R.id.btnMarkBroken);
+        btnMar.setVisibility(View.GONE);
         Button btnMore = (Button)findViewById(R.id.btnViewMore);
         btnMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fullDescription.loadData(locationRules.getFullDesc(),"text/html",null);
+                Log.w(" Description",locationRules.getFullDesc());
             }
         });
     }

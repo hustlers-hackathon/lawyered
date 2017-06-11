@@ -106,7 +106,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 holder.item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        new SeeNotificationController(noti);
+                        //new SeeNotificationController(noti);
                         Intent intent = new Intent(getContext(), LocationRulesActivity.class);
                         Bundle extras = new Bundle();
                         extras.putParcelable("noti",noti);

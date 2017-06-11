@@ -1,6 +1,7 @@
 package com.mit.law.view.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,9 +14,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.mit.law.controller.firebase.LawsForTagListController;
@@ -54,10 +58,13 @@ public class Home extends AppCompatActivity {
 
     List<Notification> notiList;
 
+    LinearLayout searchPanel;
+
     public static List<String> allTags = new ArrayList<String>(){{
         add("Criminal");
         add("Murder");
-        add("Accident");}};
+        add("Accident");
+        add("Abuse");}};
 
 
 
@@ -72,7 +79,7 @@ public class Home extends AppCompatActivity {
 
         mAuth=FirebaseAuth.getInstance();
 
-
+        searchPanel = (LinearLayout) findViewById(R.id.searchPanel);
 
         tags = (TagView) findViewById(R.id.tagGroup);
         tags.setOnTagDeleteListener(new TagView.OnTagDeleteListener() {
@@ -94,11 +101,12 @@ public class Home extends AppCompatActivity {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()){
                             case R.id.menu_laws:
+                                //addLocationTags();
                                 getLaws();
                                 break;
                             case R.id.menu_alerts:
                                 getNotifications();
-
+                                searchPanel.setVisibility(View.GONE);
                                 break;
 
                             case R.id.menu_profiles:
@@ -135,6 +143,7 @@ public class Home extends AppCompatActivity {
                     Tag tag = new Tag(s.toString());
                     tag.tagTextSize=20;
                     tag.isDeletable=true;
+                    tag.layoutColor = Color.parseColor("#590004");
                     tags.addTag(tag);
                     Log.w("Here ","Adding tag");
                     searchView.setText("");
@@ -149,6 +158,7 @@ public class Home extends AppCompatActivity {
         });
 
         //manully display the first fragment when activity loads
+        addLocationTags();
         getLaws();
     }
 
@@ -212,6 +222,7 @@ public class Home extends AppCompatActivity {
 
 
 
+
     private List<String> getStringTags(List<Tag> tags){
         List<String> stringTags = new ArrayList<>();
         for(Tag tag: tags){
@@ -223,8 +234,10 @@ public class Home extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main,menu  );
-        return super.onCreateOptionsMenu(menu);
+
+        return true;
     }
 
     @Override
@@ -235,6 +248,14 @@ public class Home extends AppCompatActivity {
             loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(loginIntent);
 
+        }else if(item.getItemId()==R.id.search_icon){
+            if(profFragDisplayed || lawsFragDisplayed){
+                if(searchPanel.getVisibility()== View.GONE){
+                    searchPanel.setVisibility(View.VISIBLE);
+                }else if(searchPanel.getVisibility()==View.VISIBLE){
+                    searchPanel.setVisibility(View.GONE);
+                }
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -242,6 +263,15 @@ public class Home extends AppCompatActivity {
 
     private void logOut() {
         mAuth.signOut();
+    }
+
+    private void addLocationTags(){
+        tags.removeAll();
+        Tag tag  =new Tag("Auditorium");
+        tag.isDeletable =true;
+        tag.tagTextSize=20;
+        tag.layoutColor = Color.parseColor("#590004");
+        tags.addTag(tag);
     }
 
 }

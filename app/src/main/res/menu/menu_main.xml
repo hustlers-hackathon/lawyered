@@ -6,5 +6,10 @@
     <item android:id="@+id/action_logout"
         android:title="log out"
         app:showAsAction="never"/>
+    <item android:title=""
+        android:id="@+id/search_icon"
+
+        android:icon="@drawable/search"
+        app:showAsAction="always"/>
 
 </menu>
