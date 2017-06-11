@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.mit.law.controller.firebase.SeeNotificationController;
 import com.mit.law.controller.firebase.ThirdPartyController;
 import com.mit.law.controller.interfaces.OnResponse;
+import com.mit.law.controller.interfaces.OnResponseThirdParties;
 import com.mit.law.model.Notification;
 import com.mit.law.model.ThirdParties;
 import com.mit.law.view.activity.Lawyer_clicks_on_notification;
@@ -71,7 +72,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 holder.item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        new SeeNotificationController(noti);//here put the new reponder and rest of the code into the if condition
+                       new SeeNotificationController(noti);//here put the new reponder and rest of the code into the if condition
+
                         Intent intent = new Intent(getContext(), Lawyer_clicks_on_notification.class);
                         Bundle extra = new Bundle();
                         extra.putParcelable("noti",noti);
