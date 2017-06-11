@@ -66,7 +66,7 @@ public class SignUpController {
                     mDatabase.child(userID).setValue(user);
                     thirdParties.setTpid(userID);
                     thirdParties.setRateCount(0);
-                    thirdParties.setReviewAvg(0);
+                    thirdParties.setReviewAvg(4.0);
 
                     mDatabaseThirdParty.child(userID).setValue(thirdParties);
                     isSuccessful=true;
