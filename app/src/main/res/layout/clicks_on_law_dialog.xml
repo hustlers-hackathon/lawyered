@@ -23,11 +23,13 @@
         android:textSize="15sp"
         android:hint="Maximum 100 words"/>
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="right">
+        android:gravity="end|bottom">
 
 
         <Button

@@ -23,7 +23,7 @@ public class Clicks_on_law_dialog extends Activity {
         //Check this out whether it is working or not, or else remove it
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.x = -20;
-        params.height = 100;
+        params.height = 400;
         params.width = 550;
         params.y = -10;
 
