@@ -24,7 +24,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimaryDark"
                     android:id="@+id/tvProfName"
@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvProfRate"
-                    android:textSize="14sp"
+                    android:textSize="17sp"
                     android:textStyle="bold"
                     android:gravity="right"
                     android:text="5/10"/>
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tvProfShort"
                 android:layout_marginTop="5dp"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:text="Short Description" />
 
             <LinearLayout
@@ -67,7 +67,7 @@
                 android:backgroundTint="@color/colorAccent"
                 android:text="View Full Profile"
                 android:textAllCaps="false"
-                android:textSize="15sp" />
+                android:textSize="17sp" />
 
         </LinearLayout>
 
